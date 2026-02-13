@@ -1,0 +1,31 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('constructions', function (Blueprint $table) {
+            $table->id();
+            $table->string('title')->nullable(); // optional caption/title
+            $table->string('image'); // image path
+            $table->string('alt_text')->nullable(); // SEO alt text
+            $table->boolean('status')->default(true); // active/inactive
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('constructions');
+    }
+};
